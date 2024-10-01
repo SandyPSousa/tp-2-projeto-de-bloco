@@ -4,7 +4,7 @@ import Footer from "./Components/Footer/Footer";
 import Header from "./Components/Header/Header";
 import InTeathers from "./Components/In-theaters-card/In-theaters-card";
 import PopularMovies from "./Components/Popular-movies-card/Popular-movies-card";
-import SearchBar from "./Components/search-bar/search-bar";
+import SearchBar from "./Components/Search-bar/Search-bar";
 
 function App() {
   return (
