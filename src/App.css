@@ -1,0 +1,62 @@
+.discover-h3 {
+  font-size: clamp(16px, 2em, 3em);
+  padding-top: 50px;
+}
+
+/* body {
+  background-color: rgb(205, 164, 244);
+} */
+
+.app-container {
+  /* background-color: rgb(215, 215, 253); */
+  width: 85%;
+  height: auto;
+  max-width: 1200px;
+  margin: 0 auto;
+  padding: 20px;
+}
+
+.popular-countries-section {
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: space-around;
+  gap: 10px;
+}
+
+.search-bar-div {
+  color: white;
+  padding-bottom: 50px;
+  padding: 10px;
+  position: relative;
+  background-color: #161154;
+  z-index: -2;
+}
+
+.search-bar-div::before {
+  content: "";
+  background-image: url("https://img.freepik.com/vetores-gratis/banner-abstrato-com-mapa-mundi_1048-12232.jpg?t=st=1727723812~exp=1727727412~hmac=e1df27f33007bbf0e38fd6c248728a2b604af13b7acc6b9a03aaf34f8ef93610&w=1380");
+  background-size: cover;
+  background-position: center;
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  z-index: -1;
+  opacity: 0.5;
+}
+
+.in-theaters-div {
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: space-around;
+  gap: 10px;
+  
+}
+
+.popular-movies-div {
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: space-around;
+  gap: 10px;
+}

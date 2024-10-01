@@ -1,0 +1,21 @@
+.search-input {
+  border-radius: 15px;
+  width: 80%;
+  height: 30px;
+  outline: none;
+  border: solid 1px black;
+  padding: 3px 15px;
+  color: rgb(95, 95, 95);
+  margin-right: 5px;
+
+}
+
+.search-div {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  margin-bottom: 30px;
+  
+}
+
+
