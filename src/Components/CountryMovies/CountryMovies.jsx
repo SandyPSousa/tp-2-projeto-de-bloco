@@ -1,56 +1,13 @@
-// import React, { useEffect, useState } from "react";
-// import { useParams } from "react-router-dom";
-// import { getPopularMoviesByCountry } from "../../themoviedb"; // Função para buscar os filmes populares
-
-// export default function CountryMovies() {
-//   const { countryCode } = useParams(); // Obter o código do país da URL
-//   const [movies, setMovies] = useState([]);
-//   const [loading, setLoading] = useState(true);
-
-//   useEffect(() => {
-//     async function fetchMovies() {
-//       const moviesData = await getPopularMoviesByCountry(countryCode);
-//       setMovies(moviesData);
-//       setLoading(false);
-//     }
-
-//     fetchMovies();
-//   }, [countryCode]);
-
-//   return (
-//     <section>
-//       <h2>Popular Movies in {countryCode}</h2>
-//       {loading ? (
-//         <p>Loading movies...</p>
-//       ) : (
-//         <div className="movies-list">
-//           {movies.map((movie, index) => (
-//             <div key={index} className="movie-card">
-//               <img
-//                 src={`https://image.tmdb.org/t/p/w500/${movie.poster_path}`}
-//                 alt={movie.title}
-//                 className="movie-poster"
-//               />
-//               <p>{movie.title}</p>
-//               <p>Rating: {movie.vote_average}</p>
-//             </div>
-//           ))}
-//         </div>
-//       )}
-//     </section>
-//   );
-// }
-
-
 import React, { useEffect, useState } from "react";
-import { useParams } from "react-router-dom";
+import { useParams, useNavigate } from "react-router-dom"; 
 import { getPopularMoviesByCountry } from "../../themoviedb"; 
-
+import { Card, CardMedia, CardContent, Typography, Grid, CircularProgress } from "@mui/material";
 
 export default function CountryMovies() {
-  const { countryCode } = useParams(); // Obter o código do país da URL
+  const { countryCode } = useParams(); 
   const [movies, setMovies] = useState([]);
   const [loading, setLoading] = useState(true);
+  const navigate = useNavigate(); 
 
   useEffect(() => {
     async function fetchMovies() {
@@ -62,25 +19,43 @@ export default function CountryMovies() {
     fetchMovies();
   }, [countryCode]);
 
+  const handleMovieClick = (movieId) => {
+    navigate(`/movies/details/${movieId}`); 
+  };
+
   return (
     <section>
-      <h2>Popular Movies in {countryCode}</h2>
+      <Typography variant="h4" gutterBottom>
+        Popular Movies in {countryCode}
+      </Typography>
       {loading ? (
-        <p>Loading movies...</p>
+        <CircularProgress />
       ) : (
-        <div className="movies-list">
+        <Grid container spacing={2}>
           {movies.map((movie, index) => (
-            <div key={index} className="movie-card">
-              <img
-                src={`https://image.tmdb.org/t/p/w500/${movie.poster_path}`}
-                alt={movie.title}
-                className="movie-poster"
-              />
-              <p>{movie.title}</p>
-              <p>Rating: {movie.vote_average}</p>
-            </div>
+            <Grid item key={index} xs={12} sm={6} md={4}>
+              <Card onClick={() => handleMovieClick(movie.id)} sx={{ cursor: 'pointer', boxShadow: 3 }}> 
+                <CardMedia
+                  component="img"
+                  image={`https://image.tmdb.org/t/p/w500/${movie.poster_path}`}
+                  alt={movie.title}
+                  height="500"
+                  sx={{
+                    objectFit: 'cover',
+                    width: '100%', 
+                    maxHeight: '500px', 
+                  }}
+                />
+                <CardContent sx={{ padding: '16px', backgroundColor: '#f5f5f5' }}>
+                  <Typography variant="h6" noWrap sx={{ fontWeight: 'bold' }}>{movie.title}</Typography>
+                  <Typography variant="body2" color="text.secondary">
+                    Rating: {movie.vote_average}
+                  </Typography>
+                </CardContent>
+              </Card>
+            </Grid>
           ))}
-        </div>
+        </Grid>
       )}
     </section>
   );

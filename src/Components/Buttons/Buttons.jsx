@@ -1,7 +1,11 @@
-import "./Buttons.css"
+import "./Buttons.css";
+import SearchIcon from '@mui/icons-material/Search';
+import { Button as MUIButton } from '@mui/material';  
 
-export default function Button (props) {
+export default function Button() {  
   return (
-    <button className="btn">Search</button>
-  )
+    <MUIButton variant="contained">
+       <SearchIcon />
+    </MUIButton>
+  );
 }

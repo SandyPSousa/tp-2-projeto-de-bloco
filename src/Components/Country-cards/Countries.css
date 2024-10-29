@@ -1,16 +1,2 @@
-.img-card {
-  width: 140px;
-  height: 140px;
-  border-radius: 50%;
-}
 
-.countries-card {
-  display: flex;
-  flex-direction: column;
-  align-items: center;
-  border: 1px solid;
-  border-radius: 20px;
-  background-color: rgb(255, 255, 255);
-  padding: 10px;
-}
 

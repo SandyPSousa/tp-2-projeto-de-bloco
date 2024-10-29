@@ -1,300 +1,14 @@
-// import React, { useEffect, useState } from "react";
-// import "./Countries.css";
-// import { getCountryMovies } from "../../themoviedb";
-
-// const countriesList = [
-//   { code: "BR", name: "Brazil" },
-//   { code: "US", name: "United States" },
-//   { code: "IN", name: "India" },
-//   { code: "FR", name: "France" },
-//   { code: "JP", name: "Japan" },
-// ];
-
-// export default function PopularCountries() {
-//   const [countries, setCountries] = useState([]);
-//   const [loading, setLoading] = useState(true);
-
-//   useEffect(() => {
-//     async function fetchPopularCountries() {
-//       const countryData = await Promise.all(
-//         countriesList.map(async (country) => {
-//           const popularity = await getCountryMovies(country.code);
-//           return {
-//             name: country.name,
-//             popularity: popularity,
-//           };
-//         })
-//       );
-
-//       const sortedCountries = countryData.sort(
-//         (a, b) => b.popularity - a.popularity
-//       );
-
-//       setCountries(sortedCountries);
-//       setLoading(false);
-//     }
-
-//     fetchPopularCountries();
-//   }, []);
-
-//   return (
-//     <section>
-//       <div className="popular-countries-section">
-//         {loading ? (
-//           <p>Loading countries...</p>
-//         ) : (
-//           countries.map((country, index) => (
-//             <div key={index} className="country-card">
-//               <p>{country.name}</p>
-//               <p>Popularity: {country.popularity.toFixed(2)}</p>
-//             </div>
-//           ))
-//         )}
-//       </div>
-//     </section>
-//   );
-// }
-
-// import React, { useEffect, useState } from "react";
-// import "./Countries.css";
-// import { getCountryMovies } from "../../themoviedb";
-
-// const countriesList = [
-//   { code: "BR", name: "Brazil", image: "https://flagcdn.com/w2560/br.png" },
-//   { code: "US", name: "United States", image: "https://flagcdn.com/w2560/us.png" },
-//   { code: "IN", name: "India", image: "https://flagcdn.com/w2560/in.png" },
-//   { code: "FR", name: "France", image: "https://flagcdn.com/w2560/fr.png" },
-//   { code: "JP", name: "Japan", image: "https://flagcdn.com/w2560/jp.png" },
-// ];
-
-// export default function PopularCountries() {
-//   const [countries, setCountries] = useState([]);
-//   const [loading, setLoading] = useState(true);
-
-//   useEffect(() => {
-//     async function fetchPopularCountries() {
-//       const countryData = await Promise.all(
-//         countriesList.map(async (country) => {
-//           const popularity = await getCountryMovies(country.code);
-//           return {
-//             name: country.name,
-//             image: country.image,  // Incluindo a imagem no retorno
-//             popularity: popularity,
-//           };
-//         })
-//       );
-
-//       const sortedCountries = countryData.sort(
-//         (a, b) => b.popularity - a.popularity
-//       );
-
-//       setCountries(sortedCountries);
-//       setLoading(false);
-//     }
-
-//     fetchPopularCountries();
-//   }, []);
-
-//   return (
-//     <section>
-//       <div className="popular-countries-section">
-//         {loading ? (
-//           <p>Loading countries...</p>
-//         ) : (
-//           countries.map((country, index) => (
-//             <div key={index} className="country-card">
-//               <img
-//                 src={country.image}
-//                 alt={`${country.name} flag`}
-//                 className="country-image"
-//               />
-//               <p>{country.name}</p>
-//               <p>Popularity: {country.popularity.toFixed(2)}</p>
-//             </div>
-//           ))
-//         )}
-//       </div>
-//     </section>
-//   );
-// }
-// import React, { useEffect, useState } from "react";
-// import { useNavigate } from "react-router-dom";
-// import "./Countries.css";
-// import { getCountryMovies } from "../../themoviedb";
-
-// const countriesList = [
-//   { code: "BR", name: "Brazil", image: "path_to_brazil_image.jpg" },
-//   { code: "US", name: "United States", image: "path_to_usa_image.jpg" },
-//   { code: "IN", name: "India", image: "path_to_india_image.jpg" },
-//   { code: "FR", name: "France", image: "path_to_france_image.jpg" },
-//   { code: "JP", name: "Japan", image: "path_to_japan_image.jpg" },
-// ];
-
-// export default function PopularCountries() {
-//   const [countries, setCountries] = useState([]);
-//   const [loading, setLoading] = useState(true);
-//   const navigate = useNavigate(); // Hook para navegação
-
-//   useEffect(() => {
-//     async function fetchPopularCountries() {
-//       const countryData = await Promise.all(
-//         countriesList.map(async (country) => {
-//           const popularity = await getCountryMovies(country.code);
-//           return {
-//             name: country.name,
-//             image: country.image,
-//             popularity: popularity,
-//             code: country.code, // Adicionar o código do país para navegação
-//           };
-//         })
-//       );
-
-//       const sortedCountries = countryData.sort(
-//         (a, b) => b.popularity - a.popularity
-//       );
-
-//       setCountries(sortedCountries);
-//       setLoading(false);
-//     }
-
-//     fetchPopularCountries();
-//   }, []);
-
-//   // Função para navegar para a lista de filmes do país selecionado
-//   const handleCountryClick = (countryCode) => {
-//     navigate(`/movies/${countryCode}`);
-//   };
-
-//   return (
-//     <section>
-//       <div className="popular-countries-section">
-//         {loading ? (
-//           <p>Loading countries...</p>
-//         ) : (
-//           countries.map((country, index) => (
-//             <div
-//               key={index}
-//               className="country-card"
-//               onClick={() => handleCountryClick(country.code)} // Navegar ao clicar
-//               style={{ cursor: "pointer" }} // Deixar claro que é clicável
-//             >
-//               <img
-//                 src={country.image}
-//                 alt={`${country.name} flag`}
-//                 className="country-image"
-//               />
-//               <p>{country.name}</p>
-//               <p>Popularity: {country.popularity.toFixed(2)}</p>
-//             </div>
-//           ))
-//         )}
-//       </div>
-//     </section>
-//   );
-// }
-
-
-
-
-
-
-
-
-
-// import React, { useEffect, useState } from "react";
-// import { useNavigate } from "react-router-dom";
-// import "./Countries.css";
-// import { getCountryMovies } from "../../themoviedb";
-
-// const countriesList = [
-//   { code: "BR", name: "Brazil", image: "path_to_brazil_image.jpg" },
-//   { code: "US", name: "United States", image: "path_to_usa_image.jpg" },
-//   { code: "IN", name: "India", image: "path_to_india_image.jpg" },
-//   { code: "FR", name: "France", image: "path_to_france_image.jpg" },
-//   { code: "JP", name: "Japan", image: "path_to_japan_image.jpg" },
-// ];
-
-// export default function PopularCountries() {
-//   const [countries, setCountries] = useState([]);
-//   const [loading, setLoading] = useState(true);
-//   const navigate = useNavigate(); // Hook para navegação
-
-//   useEffect(() => {
-//     async function fetchPopularCountries() {
-//       const countryData = await Promise.all(
-//         countriesList.map(async (country) => {
-//           const popularity = await getCountryMovies(country.code);
-//           return {
-//             name: country.name,
-//             image: country.image,
-//             popularity: popularity,
-//             code: country.code, // Adicionar o código do país para navegação
-//           };
-//         })
-//       );
-
-//       const sortedCountries = countryData.sort(
-//         (a, b) => b.popularity - a.popularity
-//       );
-
-//       setCountries(sortedCountries);
-//       setLoading(false);
-//     }
-
-//     fetchPopularCountries();
-//   }, []);
-
-//   // Função para navegar para a lista de filmes do país selecionado
-//   const handleCountryClick = (countryCode) => {
-//     navigate(`/movies/${countryCode}`);
-//   };
-
-//   return (
-//     <section>
-//       <div className="popular-countries-section">
-//         {loading ? (
-//           <p>Loading countries...</p>
-//         ) : (
-//           countries.map((country, index) => (
-//             <div
-//               key={index}
-//               className="country-card"
-//               onClick={() => handleCountryClick(country.code)} // Navegar ao clicar
-//               style={{ cursor: "pointer" }} // Deixar claro que é clicável
-//             >
-//               <img
-//                 src={country.image}
-//                 alt={`${country.name} flag`}
-//                 className="country-image"
-//               />
-//               <p>{country.name}</p>
-//               <p>Popularity: {country.popularity.toFixed(2)}</p>
-//             </div>
-//           ))
-//         )}
-//       </div>
-//     </section>
-//   );
-// }
-
-
-
-
-
-
-
-
 import React, { useEffect, useState } from "react";
 import { useNavigate } from "react-router-dom";
 import { getCountryMovies } from "../../themoviedb"; 
-import "./Countries.css";
+import { Grid2, Card, CardMedia, CardContent, Typography, CircularProgress } from '@mui/material';
 
 const countriesList = [
-  { code: "BR", name: "Brazil", image: "path_to_brazil_image.jpg" },
-  { code: "US", name: "United States", image: "path_to_usa_image.jpg" },
-  { code: "IN", name: "India", image: "path_to_india_image.jpg" },
-  { code: "FR", name: "France", image: "path_to_france_image.jpg" },
-  { code: "JP", name: "Japan", image: "path_to_japan_image.jpg" },
+  { code: "BR", name: "Brazil", image: "https://upload.wikimedia.org/wikipedia/commons/thumb/0/05/Flag_of_Brazil.svg/800px-Flag_of_Brazil.svg.png" },
+  { code: "US", name: "United States", image: "https://s3.static.brasilescola.uol.com.br/be/conteudo/images/estados-unidos.jpg" },
+  { code: "IN", name: "India", image: "https://upload.wikimedia.org/wikipedia/commons/thumb/4/41/Flag_of_India.svg/1200px-Flag_of_India.svg.png" },
+  { code: "FR", name: "France", image: "https://upload.wikimedia.org/wikipedia/commons/c/c3/Flag_of_France.svg" },
+  { code: "JP", name: "Japan", image: "https://upload.wikimedia.org/wikipedia/en/9/9e/Flag_of_Japan.svg" },
 ];
 
 export default function PopularCountries() {
@@ -333,28 +47,41 @@ export default function PopularCountries() {
 
   return (
     <section>
-      <div className="popular-countries-section">
+      <Grid2 container spacing={2} justifyContent="center">
         {loading ? (
-          <p>Loading countries...</p>
+          <CircularProgress />
         ) : (
           countries.map((country, index) => (
-            <div
-              key={index}
-              className="country-card"
-              onClick={() => handleCountryClick(country.code)}
-              style={{ cursor: "pointer" }}
-            >
-              <img
-                src={country.image}
-                alt={`${country.name} flag`}
-                className="country-image"
-              />
-              <p>{country.name}</p>
-              <p>Popularity: {country.popularity}</p>
-            </div>
+            <Grid2 item xs={12} sm={6} md={4} key={index}>
+              <Card
+                onClick={() => handleCountryClick(country.code)}
+                sx={{
+                  cursor: "pointer",
+                  transition: 'transform 0.2s',
+                  '&:hover': {
+                    transform: 'scale(1.05)',
+                  },
+                }}
+              >
+                <CardMedia
+                  component="img"
+                  height="140"
+                  image={country.image}
+                  alt={`${country.name} flag`}
+                />
+                <CardContent>
+                  <Typography variant="h6" component="div">
+                    {country.name}
+                  </Typography>
+                  <Typography variant="body2" color="text.secondary">
+                    Popularidade: {country.popularity}
+                  </Typography>
+                </CardContent>
+              </Card>
+            </Grid2>
           ))
         )}
-      </div>
+      </Grid2>
     </section>
   );
 }

@@ -5,13 +5,6 @@ export default function Header() {
     <div className="header">
       <header >
         <h1 className="header-h1">WorldFlicks</h1>
-        {/* <nav className="navbar-header">
-          <ul>
-            <li>Favorites</li>
-            <li>Popular</li>
-            <li>Decades</li>
-          </ul>
-        </nav> */}
       </header>
     </div>
   );
