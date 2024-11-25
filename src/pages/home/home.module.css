@@ -1,0 +1,13 @@
+.home {
+  display: flex;
+  flex-direction: column;
+  gap: 1rem;
+}
+
+.home_section {
+  margin: 2.5rem 0;
+}
+
+.home_section h5 {
+  margin: 1rem;
+}

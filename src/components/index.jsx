@@ -1,0 +1,9 @@
+export { default as Header } from "./header";
+export { default as Navbar } from "./navbar";
+export { default as Search } from "./search";
+export { default as Countries } from "./countries";
+export { default as Theaters } from "./theaters";
+export { default as Carrossel } from "./carrossel";
+export { default as MovieCard } from "./card";
+export { default as Trending } from "./trending";
+export { default as Footer } from "./footer";
