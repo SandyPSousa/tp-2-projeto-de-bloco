@@ -76,3 +76,16 @@ export async function getMovieDetails(movieId) {
   }
 }
 
+export async function getPopularMovies() {
+  try {
+    const response = await fetch(
+      `https://api.themoviedb.org/3/movie/popular?api_key=7fe328d8cb04d60292d16978c04c37b0&language=en-US&page=1`
+    );
+    const responseJson = await response.json();
+    return responseJson.results; 
+  } catch (error) {
+    console.error("Error fetching popular movies:", error);
+    throw error;
+  }
+}
+
