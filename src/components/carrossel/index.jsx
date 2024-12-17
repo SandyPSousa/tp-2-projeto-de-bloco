@@ -4,13 +4,13 @@ import Slider from "react-slick";
 export default function Carrossel({ children }) {
   const PreviousArrow = ({ className, onClick }) => (
     <div className={className} onClick={onClick}>
-      <FaArrowLeft style={{ color: "gray", fontSize: "30px" }} />
+      <FaArrowLeft style={{ color: "#121212", fontSize: "30px" }} />
     </div>
   );
 
   const NextArrow = ({ className, onClick }) => (
     <div className={className} onClick={onClick}>
-      <FaArrowRight style={{ color: "gray", fontSize: "30px" }} />
+      <FaArrowRight style={{ color: "#121212", fontSize: "30px" }} />
     </div>
   );
 
