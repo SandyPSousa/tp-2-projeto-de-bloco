@@ -1,5 +1,8 @@
 import { useState } from "react";
 import { useNavigate } from "react-router-dom";
+import { TextField, Button, Typography, Container, Box } from "@mui/material";
+import { Footer, Header } from "../../components";
+
 
 export default function Login() {
   const [email, setEmail] = useState("");
@@ -45,62 +48,56 @@ export default function Login() {
   };
 
   return (
-    <div style={styles.container}>
-      <h1>{isRegistering ? "Cadastrar Novo Usuário" : "Login"}</h1>
-      {error && <p style={styles.error}>{error}</p>}
-      <input
-        style={styles.input}
-        type="email"
-        placeholder="Email"
-        value={email}
-        onChange={(e) => setEmail(e.target.value)}
-      />
-      <input
-        style={styles.input}
-        type="password"
-        placeholder="Senha"
-        value={password}
-        onChange={(e) => setPassword(e.target.value)}
-      />
-      <button style={styles.button} onClick={isRegistering ? handleRegister : handleLogin}>
-        {isRegistering ? "Cadastrar" : "Entrar"}
-      </button>
-      <button style={styles.toggleButton} onClick={toggleRegisterMode}>
-        {isRegistering ? "Já tem uma conta? Fazer Login" : "Criar uma conta"}
-      </button>
+    <div>
+      <Header />
+      <Container component="main" maxWidth="xs">
+        <Box sx={{ display: "flex", flexDirection: "column", alignItems: "center", justifyContent: "center", height: "100vh" }}>
+          <Typography variant="h5" gutterBottom>
+            {isRegistering ? "Cadastrar Novo Usuário" : "Login"}
+          </Typography>
+          {error && (
+            <Typography variant="body2" color="error" sx={{ marginBottom: 2 }}>
+              {error}
+            </Typography>
+          )}
+          <TextField
+            label="Email"
+            variant="outlined"
+            fullWidth
+            margin="normal"
+            value={email}
+            onChange={(e) => setEmail(e.target.value)}
+          />
+          <TextField
+            label="Senha"
+            type="password"
+            variant="outlined"
+            fullWidth
+            margin="normal"
+            value={password}
+            onChange={(e) => setPassword(e.target.value)}
+          />
+          <Button
+            variant="contained"
+            color="primary"
+            fullWidth
+            sx={{ marginTop: 2 }}
+            onClick={isRegistering ? handleRegister : handleLogin}
+          >
+            {isRegistering ? "Cadastrar" : "Entrar"}
+          </Button>
+          <Button
+            variant="text"
+            color="primary"
+            fullWidth
+            sx={{ marginTop: 2 }}
+            onClick={toggleRegisterMode}
+          >
+            {isRegistering ? "Já tem uma conta? Fazer Login" : "Criar uma conta"}
+          </Button>
+        </Box>
+      </Container>
+      <Footer />
     </div>
   );
 }
-
-const styles = {
-  container: {
-    display: "flex",
-    flexDirection: "column",
-    alignItems: "center",
-    justifyContent: "center",
-    height: "100vh",
-  },
-  input: {
-    margin: "10px 0",
-    padding: "10px",
-    fontSize: "16px",
-    width: "300px",
-  },
-  button: {
-    padding: "10px 20px",
-    fontSize: "16px",
-    cursor: "pointer",
-    marginTop: "10px",
-  },
-  toggleButton: {
-    marginTop: "10px",
-    cursor: "pointer",
-    backgroundColor: "transparent",
-    border: "none",
-    color: "#007bff",
-  },
-  error: {
-    color: "red",
-    marginBottom: "10px",
-  },
-};
