@@ -55,7 +55,7 @@ export default function Countries() {
           return {
             name: country.name,
             image: country.image,
-            popularity: popularity.length,
+            
             code: country.code,
           };
         })
@@ -105,7 +105,7 @@ export default function Countries() {
                     {country.name}
                   </Typography>
                   <Typography variant="body2" color="text.secondary">
-                    Popularidade: {country.popularity}
+                   
                   </Typography>
                 </CardContent>
               </Card>

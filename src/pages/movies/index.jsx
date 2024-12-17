@@ -57,9 +57,7 @@ export default function CountryMovies() {
                     maxHeight: "500px",
                   }}
                 />
-                <CardContent
-                  sx={{ padding: "16px", backgroundColor: "#f5f5f5" }}
-                >
+                <CardContent sx={{ padding: "16px" }}>
                   <Typography variant="h6" noWrap sx={{ fontWeight: "bold" }}>
                     {movie.title}
                   </Typography>

@@ -9,7 +9,7 @@ export default function Home() {
   return (
     <Box className={styles.home}>
       <Box component="section" className={styles.home_section}>
-        <Typography variant="h5">MOST POPULAR COUNTRIES BY MOVIES</Typography>
+        <Typography variant="h5">POPULAR COUNTRIES</Typography>
         <Countries />
       </Box>
       <Box component="section" className={styles.home_section}>

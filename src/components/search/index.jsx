@@ -44,6 +44,13 @@ export default function Search() {
         variant="contained"
         endIcon={<SearchIcon />}
         onClick={handleClick}
+        sx={{
+          backgroundColor: '#161154',
+          color: 'white',
+          '&:hover': {
+            backgroundColor: 'primary.dark', 
+          },
+        }}
       >
         Search
       </Button>
